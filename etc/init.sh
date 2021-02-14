@@ -3,14 +3,14 @@ R=<%= $dest %>
 
 services=""
 for i in `find $R/services/enabled -name '*.conf'`; do
-    b=`basename $i`
-    b=`echo $b | sed 's/.conf$//'`
-    services="$b,$services"
+    b="${i##*/}" # `basename $i`
+    # b=`echo $b | sed 's/.conf$//'`
+    services="${b:r},$services"
 done
-services=`echo $services | sed 's/,$//'`
+# services=`echo $services | sed 's/,$//'`
 cat << EOF > $R/cache/supervisor_startup.conf
 [group:default]
-programs=$services
+programs=`print $services | sed 's/,$//'`
 priority=10
 umask=022
 EOF
@@ -21,18 +21,19 @@ if [ -r $R/cache/supervisord.pid ]; then
     if [ $? != 0 ]; then rm $R/cache/supervisord.pid; fi
 fi
 if ! [ -r $R/cache/supervisord.pid ]; then
-	echo "Starting services: $services"
+	print "Starting services: $services"
 	supervisord -c $R/supervisor.conf
     cd /mnt/c
     cmd.exe /c start http://127.0.0.1:9001
     cd -
 fi
 
-echo -n "Loading environment settings... "
+print -n "Loading environment settings... "
 for i in `find $R/env.d/ -name '*.sh'`; do
-	b=`basename $i`
-	echo -n "$b "
+	b="${i##*/}" # `basename $i`
+	print -n "$b "
 	. "$R/env.d/$b"
 done
+print
 echo "Supervisor: http://127.0.0.1:9001"
 
