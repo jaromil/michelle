@@ -1,4 +1,6 @@
-echo "Initializing Oh My WSL!"
+#!/bin/zsh
+
+echo "Michelle welcomes you."
 R=<%= $dest %>
 
 services=""
