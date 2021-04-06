@@ -1,43 +1,40 @@
-# Oh My WSL!
+# A lovely shell setup called Michelle
 
-A delightful & open-source framework for the Windows Subsystem for Linux
+A delightful & open-source shell setup for any Linux system, including WSL
 
-Oh My WSL aims to be a delightful, open source and community-driven framework for managing your WSL configuration, the way oh-my-zsh is for the Z Shell.
+Michelle aims to be a delightful, open source and community-driven framework for managing your shell configuration.
 
-It will bundle a graphical service manager and helpful functions, helpers and a few things that make you shout... Oh My WSL!
+It will bundle a graphical service manager and helpful functions, helpers and a few things that make you shout... My Michelle!
 
 ## Requirements
 
-Any GNU/Linux or WSL/Linux distribution can run Oh My WSL, given the following requirements are installed:
+Any GNU/Linux or WSL/Linux distribution can run Michelle, given the following requirements are installed:
 
 - Zsh
-- Python3
+- Python3 / pip
 - Supervisor (also known as supervisord)
+- Syncthing
+
+Install them by hand on your own system or (TODO) use this script for a quick start:
+
+```
+curl -s https://github.com/dyne/michelle/requirements.sh | sudo bash
+```
+
+Installing requirements will need root permission.
 
 ## Install
 
-Ease of installation is the first feature: run these 3 commands on any WSL distro to get started:
+Ease of installation is the first feature: run these 3 commands in any shell to get started:
+
+(TODO)
 
 ```
-git clone https://github.com/jaromil/oh-my-wsl
-cd oh-my-wsl
-./install.sh
+curl -s https://github.com/jaromil/michelle/install.sh | zsh
 ```
 
-This does not require root permission, will install everything in your WSL HOME directory under `~/.oh-my-wsl`
-
-## Recommended software
-
-We recommend using Oh My WSL with:
-- Alpine WSL https://www.microsoft.com/en-us/p/alpine-wsl/9p804crf0395
-- Oh My Zsh! https://ohmyz.sh
-- Terminus https://eugeny.github.io/terminus/
-- Password-Store https://password-store.org
-
-## Contributors
-
-Oh My WSL should become a vibrant community of happy users and delightful contributors. Without time and help from contributors, it cannot ever be awesome.
+This does not require root permission, will install everything in your HOME directory under `~/.michelle`
 
 ## License
 
-Oh My WSL is released under the MIT license.
+Michelle is released under the MIT license.
